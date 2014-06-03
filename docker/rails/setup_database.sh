@@ -1,4 +1,5 @@
 #!/bin/bash
+
 cd /app
 bundle exec rake db:drop db:create db:migrate
 
@@ -8,6 +9,4 @@ cp /app/db/current.sql.zip /tmp
 cd /tmp
 unzip /tmp/current.sql.zip 
 
-export MYSQL_HOST=$AIT_MYSQL_PORT_3306_TCP_ADDR
-
-mysql -f -u admin --password=aitdev3333  activeintime_development < /tmp/current.sql
+PGPASSWORD=$DB_ENV_POSTGRESQL_PASS psql -U $DB_ENV_POSTGRESQL_USER -d dpa_development -f current.sql -h $DB_PORT_5432_TCP_ADDR
