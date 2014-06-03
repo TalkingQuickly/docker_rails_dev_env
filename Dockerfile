@@ -28,6 +28,8 @@ RUN gem install bundler rubygems-bundler --no-rdoc --no-ri
 # Regenerate binstubs
 RUN gem regenerate_binstubs
 
+RUN apt-get install -y -q postgresql-client
+
 # Rails app
 ADD docker/rails/start-server.sh /start-server.sh
 RUN chmod +x /start-server.sh
