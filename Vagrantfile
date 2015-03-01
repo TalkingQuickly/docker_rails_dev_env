@@ -42,7 +42,7 @@ Vagrant.configure("2") do |config|
   config.vm.network "forwarded_port", guest: 3000, host: 3000
 
   # Ubuntu
-  config.vm.box = "precise64"
+  config.vm.box = "ubuntu/trusty64"
 
   # Install latest docker
   config.vm.provision "docker"
